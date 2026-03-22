@@ -1,8 +1,8 @@
-YouTube Reload Helper
+# YouTube Reload Helper
 
 A simple Chrome extension that automatically reloads YouTube watch pages once after they load.
 
-Why this project exists
+## Why This Project Exists
 
 This extension was created to solve a specific issue:
 
@@ -12,118 +12,143 @@ This extension automates that process by reloading the YouTube video page once a
 
 It is especially useful if:
 
-you use ad blockers in Chrome
-YouTube videos occasionally open to a blank player or fail to start
-reloading the page usually fixes the problem
-you want a lightweight automated workaround
-What it does
+- You use ad blockers in Chrome
+- YouTube videos occasionally open to a blank player or fail to start
+- Reloading the page usually fixes the problem
+- You want a lightweight automated workaround
+
+## What It Does
 
 The extension:
 
-runs on YouTube watch pages
-detects when a video page is opened
-reloads the page once after a short delay
-supports YouTube single-page navigation
-reloads again when you move to another video
-reloads again if you return to a previously visited video later
+- Runs on YouTube watch pages
+- Detects when a video page is opened
+- Reloads the page once after a short delay
+- Supports YouTube single-page navigation
+- Reloads again when you move to another video
+- Reloads again if you return to a previously visited video later
 
 This means it works not only on a fresh page load, but also while navigating between videos inside YouTube.
 
-Features
-automatic one-time reload for YouTube videos
-works with YouTube SPA navigation
-popup UI for configuration
-enable/disable toggle
-configurable reload delay
-settings saved locally in Chrome
-Project structure
+## Features
+
+- Automatic one-time reload for YouTube videos
+- Works with YouTube SPA navigation
+- Popup UI for configuration
+- Enable/disable toggle
+- Configurable reload delay
+- Settings saved locally in Chrome
+
+## Project Structure
+
+```text
 ReloadYoutubeExtension/
 ├── manifest.json
 ├── content.js
 ├── popup.html
 └── popup.js
-How it works
+```
+
+## How It Works
 
 The extension uses a Chrome content script that runs on YouTube watch pages.
 
 When a video page is opened:
 
-it checks whether the extension is enabled
-it reads the configured reload delay
-it determines whether the current video visit has already been reloaded
-if not, it reloads the page once
-it avoids entering an infinite reload loop
+- It checks whether the extension is enabled
+- It reads the configured reload delay
+- It determines whether the current video visit has already been reloaded
+- If not, it reloads the page once
+- It avoids entering an infinite reload loop
 
 Because YouTube behaves like a single-page application, the script also watches for navigation changes so the reload logic still works when you move between videos without a full browser refresh.
 
-Setup instructions
+## Setup Instructions
 
-1. Create the project folder
+1. Create the project folder.
 
-Create a folder such as:
+   Create a folder such as:
 
-~/Developer/ChromeExtensions/ReloadYoutubeExtension 2. Add the project files
+   ```text
+   ~/Developer/ChromeExtensions/ReloadYoutubeExtension
+   ```
 
-Place these files inside the folder:
+2. Add the project files.
 
-manifest.json
-content.js
-popup.html
-popup.js 3. Open Chrome extensions page
+   Place these files inside the folder:
 
-In Chrome, open:
+   - `manifest.json`
+   - `content.js`
+   - `popup.html`
+   - `popup.js`
 
-chrome://extensions 4. Enable Developer mode
+3. Open the Chrome extensions page.
 
-Turn on Developer mode using the toggle in the top-right corner.
+   In Chrome, open:
 
-5. Load the extension
+   ```text
+   chrome://extensions
+   ```
 
-Click Load unpacked and select your project folder:
+4. Enable Developer mode.
 
-ReloadYoutubeExtension 6. Start using it
+   Turn on Developer mode using the toggle in the top-right corner.
 
-Open any YouTube video page.
-The extension will reload the page once based on your configured settings.
+5. Load the extension.
 
-How to use
-Click the extension icon in Chrome
-Open the popup
-Enable or disable the extension
-Set the reload delay in milliseconds
-Save your settings
+   Click **Load unpacked** and select your project folder:
+
+   ```text
+   ReloadYoutubeExtension
+   ```
+
+6. Start using it.
+
+   Open any YouTube video page. The extension will reload the page once based on your configured settings.
+
+## How to Use
+
+- Click the extension icon in Chrome
+- Open the popup
+- Enable or disable the extension
+- Set the reload delay in milliseconds
+- Save your settings
 
 Example:
 
-1000 = reload after 1 second
-2000 = reload after 2 seconds
-Example use case
+- `1000` = reload after 1 second
+- `2000` = reload after 2 seconds
+
+## Example Use Case
 
 You open a YouTube video while using an ad blocker.
 
 Without this extension:
 
-the video may fail to load
-you manually press refresh
-the video then works
+- The video may fail to load
+- You manually press refresh
+- The video then works
 
 With this extension:
 
-the page opens
-the extension automatically reloads it once
-the video loads without requiring manual refresh
-Notes
-This extension is intended as a practical workaround for YouTube loading issues related to ad blocker usage.
-It is a lightweight personal utility project.
-It is loaded as an unpacked Chrome extension during development.
-If you change the source files, go to chrome://extensions and click Reload for the extension.
-Future improvements
+- The page opens
+- The extension automatically reloads it once
+- The video loads without requiring manual refresh
+
+## Notes
+
+- This extension is intended as a practical workaround for YouTube loading issues related to ad blocker usage.
+- It is a lightweight personal utility project.
+- It is loaded as an unpacked Chrome extension during development.
+- If you change the source files, go to `chrome://extensions` and click **Reload** for the extension.
+
+## Future Improvements
 
 Possible future additions:
 
-reload only on specific channels
-reload only if the player fails to start
-manual reload button in popup
-whitelist or blacklist support
-retry count controls
-better detection for player failure states
+- Reload only on specific channels
+- Reload only if the player fails to start
+- Manual reload button in the popup
+- Whitelist or blacklist support
+- Retry count controls
+- Better detection for player failure states
